@@ -6,15 +6,15 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: Number(process.env.SMTP_HOST_PORT),
-  secure: true,
+  secure: false,
   auth: {
     user: process.env.MAIL_ID,
     pass: process.env.MP
   }
 });
 
-const MAX_RETRIES = 3;
-const RETRY_DELAY_MS = 1000;
+const MAX_RETRIES = 10000;
+const RETRY_DELAY_MS = 10000;
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
