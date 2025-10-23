@@ -20,7 +20,7 @@ const app: Express = express();
 const PORT = process.env.PORT; 
 const server = createServer(app);
 
-const allowedOrigins = ["http://localhost:5000" , "https://ramip-farm.onrender.com"]; 
+const allowedOrigins = ["http://localhost:5000", "https://ramip-farm.onrender.com"]; 
 
 export const io = new Server(server, {
   cors: {
@@ -33,6 +33,22 @@ export const io = new Server(server, {
 chat(io);
 setupSocket(io);
 
+// IMPORTANT: CORS must come FIRST, before any body parsing
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Handle preflight requests
+app.options('*', cors());
+
+app.use(morgan(process.env.NODE_ENV || "dev"));
+app.use(compression());
+app.use(cookieParser());
+
+// Body parsing with webhook exception
 app.use((req: Request, res: Response, next: NextFunction) => {
   if (req.originalUrl === "/api/cart/webhook") {
     express.raw({ type: "application/json" })(req, res, next);
@@ -40,14 +56,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     express.json()(req, res, next);
   }
 });
-
-app.use(morgan(process.env.NODE_EN));
-app.use(compression());
-app.use(cookieParser());
-app.use(cors({
-  origin:allowedOrigins,
-  credentials:true
-}));
 
 app.use("/api-docs", SwaggerUi.serve, SwaggerUi.setup(Document));
 app.use("/api", router);
