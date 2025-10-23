@@ -35,11 +35,6 @@ ENV SERVER_URL_PRO=
 
 # copy your project in your work directory
 RUN mkdir /app
-WORKDIR /app
-
-COPY ./package.json /app
-COPY ./package-lock.json /app
-
 RUN npm install
 
 COPY . /app
