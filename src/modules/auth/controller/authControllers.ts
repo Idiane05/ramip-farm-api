@@ -31,7 +31,7 @@ const registerUser = async (req: Request, res: Response): Promise<void> => {
     res.status(httpStatus.CREATED).json({
       status: httpStatus.CREATED,
       message:
-        "Account created successfully. Please check email to verify account.",
+        "Account created successfull",
       data: { user: register }
     });
   } catch (error) {

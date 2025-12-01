@@ -123,7 +123,7 @@ Users.init(
     isVerified: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
-      defaultValue: false,
+      defaultValue: true,
     },
     isGoogleAccount: {
       type: DataTypes.BOOLEAN,
