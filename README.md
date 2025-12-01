@@ -7,8 +7,8 @@ Farm-RAMIP Backend API is a scalable server-side solution for an agricultural ma
 - User authentication and authorization
 - Product listing and management
 - Order processing and tracking
-- Payment integration (MTN Mobile Money, Airtel Money)
-- Real-time notifications (SMS, Email)
+- Payment integration 
+- Real-time notifications
 - Market analytics and reporting
 - File upload and management
 - Location-based services
@@ -21,7 +21,8 @@ Farm-RAMIP Backend API is a scalable server-side solution for an agricultural ma
 
 1. **Clone the repository**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/Idiane05/ramip-farm-api
+   
    cd farm-ramip-backend
    ```
 
