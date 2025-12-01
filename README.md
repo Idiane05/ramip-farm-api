@@ -23,7 +23,7 @@ Farm-RAMIP Backend API is a scalable server-side solution for an agricultural ma
    ```sh
    git clone https://github.com/Idiane05/ramip-farm-api
    
-   cd farm-ramip-backend
+   cd ramip-farm-api
    ```
 
 2. **Install dependencies**
